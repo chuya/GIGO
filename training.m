@@ -1,6 +1,8 @@
 folderRoot = 'dataset'; 
-newShape = 0;
-newGabor = 0;
+newShape = false;
+newGabor = false;
+newLocal = false;
+localPreprocess = false;
 
 addpath('subfunction', 'lib');
 folders = dir(folderRoot);
@@ -22,6 +24,7 @@ end
 
 shapeVectors = getShape(fileList, 6, newShape);
 gaborVectors = getGabor(fileList, newGabor);
+localVectors = getLocal(folderRoot, 0, newLocal);
 
 vectors = fuse(shapeVectors, gaborVectors);
 

@@ -1,24 +1,30 @@
 folderRoot = 'dataset'; 
-fshape = true;
+newShape = 0;
+newGabor = 0;
 
 addpath('subfunction', 'lib');
 folders = dir(folderRoot);
-typeList = {};
+% typeList = {};
 fileList = {};
 
 
 for folderIndex = 3:numel(folders)  
     typeName = folders(folderIndex).name;
-    typeList{end+1} = typeName;
+%     typeList{end+1} = typeName;
     typeRoute = strcat(pwd,'\',folderRoot,'\',typeName);
     files = dir(typeRoute);
     for fileIndex = 3:numel(files)
         eachFileName = files(fileIndex).name;
-        fileList{end+1} = strcat(typeRoute,'\',eachFileName);
+        fileList{end+1,1} = strcat(typeRoute,'\',eachFileName);
+        fileList{end,2} = typeName;
     end
 end
 
-shapeVector = getShape(fileList, 6, fshape);
+shapeVectors = getShape(fileList, 6, newShape);
+gaborVectors = getGabor(fileList, newGabor);
+localVectors = getLocal(folderRoot,0
 
-size = size(shapeVector)
-for i = 1:numel(shapeVector
+vectors = fuse(shapeVectors, gaborVectors);
+
+
+
