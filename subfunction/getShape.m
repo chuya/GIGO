@@ -1,10 +1,18 @@
-function vectors = getShape(fileList, depth)
-vectors = [];
-for fileIndex = 1:numel(fileList)/2
-    vectors = cat(1, vectors, hierarchicalCentroid( rgb2gray(imread(fileList{fileIndex,1})), depth, 0)); %the third parameter determines to plot or not
-end
+function vectors = getShape(fileList, depth, isNewFeature)
 
-vectors = (vectors + 1) / 2;    % normalize
+vectors = [];
+fileName = 'shapeVectors';
+
+if exist(fileName, 'file') ~= 0 && isNewFeature == 0
+    vectors = dlmread(fileName);
+else
+    for fileIndex = 1:numel(fileList)/2
+        vectors = cat(1, vectors, hierarchicalCentroid( rgb2gray(imread(fileList{fileIndex,1})), depth, 0)); %the third parameter determines to plot or not
+    end
+
+    vectors = (vectors + 1) / 2;    % normalize
+    dlmwrite(fileName, vectors, 'delimiter', '\t');
+end
 % if flag == true || ~exist(ansFolderName, 'file')% not exists  % need to recompute mean and std 
 %     [numOfVectors, numOfFeatures] = size(vectors);
 %     mean = mean(vectors, 1);
@@ -19,4 +27,3 @@ vectors = (vectors + 1) / 2;    % normalize
 %         disp([i j sum((vectors(i,:) - vectors(j,:)) .^ 2)]);
 %     end
 % end
-dlmwrite('shapeVectors', vectors, 'delimiter', '\t');

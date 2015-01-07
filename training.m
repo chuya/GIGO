@@ -1,4 +1,6 @@
 folderRoot = 'dataset'; 
+newShape = 0;
+newGabor = 0;
 
 addpath('subfunction', 'lib');
 folders = dir(folderRoot);
@@ -18,8 +20,8 @@ for folderIndex = 3:numel(folders)
     end
 end
 
-shapeVectors = getShape(fileList, 6);
-gaborVectors = getGabor(fileList);
+shapeVectors = getShape(fileList, 6, newShape);
+gaborVectors = getGabor(fileList, newGabor);
 
 vectors = fuse(shapeVectors, gaborVectors);
 
