@@ -1,0 +1,22 @@
+function [vectors] = getLocal(imgs,flag)
+functionname='getLocal.m';
+nowDir = 'subfunction';
+functiondir=which(functionname);
+functiondir=functiondir(1:end-( length(functionname)+length('\')+length(nowDir) ));
+addpath([functiondir '\' nowDir '\localfunction']);
+% if flag == 0, represent dataset doesn't change, so no need to do
+% preProcess again
+    if(flag == 0)
+        vectors = getScoreFromSurf(imgs);
+% if flag == 1, represent dataset change, do preProcess ag
+    elseif(flag ==1)
+        
+        preProcess_surf(imgs);
+        
+        dataSetPath = imgPath;
+        allTopicFloderList = dir(dataSetPath);
+        for i = 3:numel(allTopicFloderList)
+            findKeyDescriptor(allTopicFloderList(i).name);
+        end       
+    end
+end
