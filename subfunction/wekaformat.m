@@ -1,7 +1,7 @@
 function wekaformat(data,tags)
     savePath = './temp/wekaformat/';
     checkOwnDir(savePath);
-    filename = [savePath 'wekaData.txt'];
+    filename = [savePath 'wekaData.arff'];
     fileID = fopen(filename,'w');
     fprintf(fileID,'@relation GIGO\n\n');
     L = length(data);

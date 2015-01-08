@@ -1,8 +1,8 @@
 folderRoot = 'dataset'; 
-newShape = false;
-newGabor = false;
-newLocal = false;
-localPreprocess = false;
+newShape = true;
+newGabor = true;
+newLocal = true;
+localPreprocess = true;
 
 addpath('subfunction', 'lib');
 folders = dir(folderRoot);
@@ -27,6 +27,7 @@ gaborVectors = getGabor(fileList, newGabor);
 localVectors = getLocal(folderRoot, 0, newLocal);
 
 vectors = fuse(shapeVectors, gaborVectors);
+wekaformat(vectors, fileList);
 
 
 
