@@ -34,12 +34,12 @@ for topicIndex = 1:length(topicList)
     %     fprintf('Correct!\n');
     % end
     for tempTopicIndex = 1:length(topicList)
-        allTestDataList = dir([testDataPath '\' char(topicList(topicIndex))]);
+        allTestDataList = dir([testDataPath '\' char(topicList(tempTopicIndex))]);
         testDataNumber = numel(allTestDataList);
-        fprintf('#%s\n',char(topicList(topicIndex)));
+        fprintf('#%s\n',char(topicList(tempTopicIndex)));
         for index=3:testDataNumber
             fprintf('#%d Data is processing.\n',(index-2) );
-            testImagePath = [testDataPath '\' char(topicList(topicIndex)) '\' allTestDataList(index).name];
+            testImagePath = [testDataPath '\' char(topicList(tempTopicIndex)) '\' allTestDataList(index).name];
             I1=imread(testImagePath);
             I1 = imresize(I1,[512 512]);
             Options.upright=true;
@@ -58,9 +58,12 @@ for topicIndex = 1:length(topicList)
             end
             tempScoreList = double(tempScoreList) / pointsNumber ;
 %             scoreList((index-2)) = {tempScoreList} ;
+            
             scoreList = cat(1,scoreList,tempScoreList);
         end
     end
+    size(finalScoreList)
+    size(scoreList)
     finalScoreList = cat(2,finalScoreList,scoreList);
     fprintf('Check it!\n');
 end

@@ -26,7 +26,7 @@ function [vectors] = getLocal(imgs,preProcessFlag,isNewFeature)
             %  arg:imgs is dataset path where save image.       
             preProcess_surf(imgs);
             %  get all topic key points about local descriptor       
-            dataSetPath = imgPath;
+            dataSetPath = imgs;
             allTopicFloderList = dir(dataSetPath);
             for i = 3:numel(allTopicFloderList)
                 findKeyDescriptor(allTopicFloderList(i).name);

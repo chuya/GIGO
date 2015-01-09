@@ -1,7 +1,18 @@
-function finalVectors = fuse(varargin)
+function finalVectors = fuse(randomProjection, varargin)
 
 finalVectors = [];
-for vectorIndex = 1:numel(varargin)
-    finalVectors
+if randomProjection
+    if isequal(randomProjectionSpace,[])
+        randomProjectionSpace = normrnd( 0, 1, size(finalVectors, 2)*0.25, size(finalVectors, 2));
+    end
+    
+    for vectorIndex = 1:numel(varargin)
+        finalVectors = cat(2,finalVectors,varargin{vectorIndex});
+        
+    end
+    
+else
+    for vectorIndex = 1:numel(varargin)
+        finalVectors = cat(2,finalVectors,varargin{vectorIndex});
+    end
 end
-

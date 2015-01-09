@@ -4,8 +4,8 @@ function wekaformat(data,tags)
     filename = [savePath 'wekaData.arff'];
     fileID = fopen(filename,'w');
     fprintf(fileID,'@relation GIGO\n\n');
-    L = length(data);
-    for i = 1:L
+    [dataSize,featureSize] = size(data);
+    for i = 1:featureSize
         attributeName = ['f' int2str(i)];
         fprintf(fileID,'@attribute %s numeric\n',attributeName);
     end
@@ -19,7 +19,7 @@ function wekaformat(data,tags)
     topicName = ['{' topicName(1:end-1) '}'];
     fprintf(fileID,'@attribute tag %s\n\n',topicName);
     fprintf(fileID,'@data\n');
-    [dataSize,featureSize] = size(data);
+    
     for dataIndex = 1:dataSize
         line =[];
         for featureIndex = 1:featureSize

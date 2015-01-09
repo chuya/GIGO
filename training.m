@@ -1,8 +1,9 @@
 folderRoot = 'dataset'; 
-newShape = true;
-newGabor = true;
-newLocal = true;
-localPreprocess = true;
+newShape = false;
+newGabor = false;
+newLocal = false;
+localPreprocess = false;
+isRandomProjection = true;
 
 addpath('subfunction', 'lib');
 folders = dir(folderRoot);
@@ -24,9 +25,10 @@ end
 
 shapeVectors = getShape(fileList, 6, newShape);
 gaborVectors = getGabor(fileList, newGabor);
-localVectors = getLocal(folderRoot, 0, newLocal);
+localVectors = getLocal(folderRoot, localPreprocess, newLocal);
 
-vectors = fuse(shapeVectors, gaborVectors);
+vectors = fuse(isRandomProjection, shapeVectors, gaborVectors, localVectors);
+
 wekaformat(vectors, fileList);
 
 
