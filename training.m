@@ -3,7 +3,7 @@ newShape = false;
 newGabor = false;
 newLocal = false;
 localPreprocess = false;
-isRandomProjection = true;
+isRandomProjection = false;
 
 addpath('subfunction', 'lib');
 folders = dir(folderRoot);

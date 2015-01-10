@@ -85,9 +85,9 @@ for imgIndex = 3:imageNumber
     fprintf('Progress Bar %d/%d \n',imgIndex,imageNumber);
 end
 [number, matchIndex]=sort(numberMatch,'descend');
-descriptorSavePath = [descriptorPath 'key100Descriptor\'];
+descriptorSavePath = [descriptorPath 'key50Descriptor\'];
 checkOwnDir(descriptorSavePath);
-maxKeyPoint = 100;
+maxKeyPoint = 50;
 nowGetKeyPoint = 0 ;
 nowMatchIndex = 1;
 alreadyPick={};
