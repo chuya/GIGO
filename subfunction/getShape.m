@@ -1,4 +1,4 @@
-function vectors = getShape(fileList, depth, isNewFeature)
+function vectors = getShape(fileList, isNewFeature)
 
 vectors = [];
 fileName = 'shapeVectors';
@@ -7,12 +7,12 @@ if exist(fileName, 'file') ~= 0 && isNewFeature == 0
     vectors = dlmread(fileName);
 else
     for fileIndex = 1:numel(fileList)/2
-        tempImage = rgb2gray(imread(fileList{fileIndex,1}));
-        [row,column] = size(tempImage);
-        if row < column
-            tempImage = imrotate(tempImage,-90);
-        end
-        vectors = cat(1, vectors, hierarchicalCentroid( tempImage , depth, 0)); %the third parameter determines to plot or not
+%         tempImage = rgb2gray(imread(fileList{fileIndex,1}));
+%         [row,column] = size(tempImage);
+%         if row < column
+%             tempImage = imrotate(tempImage,-90);
+%         end
+        vectors = cat(1, vectors, getShapeVector(imread(fileList{fileIndex,1}))); %the third parameter determines to plot or not
     end
 
     vectors = (vectors + 1) / 2;    % normalize

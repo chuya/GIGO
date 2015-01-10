@@ -23,7 +23,7 @@ for folderIndex = 3:numel(folders)
     end
 end
 
-shapeVectors = getShape(fileList, 6, newShape);
+shapeVectors = getShape(fileList, newShape);
 gaborVectors = getGabor(fileList, newGabor);
 localVectors = getLocal(folderRoot, localPreprocess, newLocal);
 
