@@ -22,7 +22,7 @@ function varargout = GUI(varargin)
 
 % Edit the above text to modify the response to help GUI
 
-% Last Modified by GUIDE v2.5 10-Jan-2015 19:56:38
+% Last Modified by GUIDE v2.5 11-Jan-2015 13:59:48
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -95,6 +95,14 @@ function pushbutton2_Callback(hObject, eventdata, handles)
 img = get(handles.text2,'String');
 if(length(img)>0)
     set(handles.text1,'String','Please wait for image processing...');
+    drawnow;
+    result = testingV2(img) ;
+    resultMessage = ['It is ' result ' !'];
+    set(handles.text1,'String',resultMessage);
+    drawnow;
 else
     set(handles.text1,'String','Please select image first.');
 end
+
+
+

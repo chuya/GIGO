@@ -5,4 +5,4 @@ tempImage = rgb2gray(image);
 if row < column
     tempImage = imrotate(tempImage,-90);
 end
-feature = hierarchicalCentroid( tempImage , 6, 0)
+feature = hierarchicalCentroid( tempImage , 6, 0);
