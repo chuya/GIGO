@@ -22,7 +22,7 @@ function varargout = GUI(varargin)
 
 % Edit the above text to modify the response to help GUI
 
-% Last Modified by GUIDE v2.5 10-Jan-2015 18:54:31
+% Last Modified by GUIDE v2.5 10-Jan-2015 19:56:38
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -83,9 +83,18 @@ guidata(hObject,handles);
 image = strcat(pathname,filename);
 axes(handles.axes1);
 imshow(image);
+set(handles.text2,'String',image);
+
 
 % --- Executes on button press in pushbutton2.
 function pushbutton2_Callback(hObject, eventdata, handles)
 % hObject    handle to pushbutton2 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
+
+img = get(handles.text2,'String');
+if(length(img)>0)
+    set(handles.text1,'String','Please wait for image processing...');
+else
+    set(handles.text1,'String','Please select image first.');
+end

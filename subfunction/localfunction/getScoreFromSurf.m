@@ -17,7 +17,7 @@ finalScoreList = [];
 
 for topicIndex = 1:length(topicList)
     fprintf('Check (%s) KeyDescriptor\n',char(topicList(topicIndex)));
-    descriptorKeyPointPath = [functiondir 'subfunction\temp\tempLocal\prefeature\' char(topicList(topicIndex)) 'key20Descriptor'];
+    descriptorKeyPointPath = [functiondir 'subfunction\temp\tempLocal\prefeature\' char(topicList(topicIndex)) 'key50Descriptor'];
     allKeyPointList = dir(descriptorKeyPointPath);
 %     allTestDataList = dir(testDataPath);
     keyPointNumber = numel(allKeyPointList); 
@@ -50,7 +50,7 @@ for topicIndex = 1:length(topicList)
             tempScoreList = linspace(0,0,keyPointNumber-2);
             for i = 1:pointsNumber
                 distance=sum((desKeyPoint-repmat(D1(:,i),[1 size(desKeyPoint,2)])).^2,1);
-                for ind = 1:20
+                for ind = 1:50
                     if(distance(ind) < 0.1)
                         tempScoreList(ind) = tempScoreList(ind) + 1;
                     end
