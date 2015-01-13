@@ -97,7 +97,7 @@ if(length(img)>0)
     set(handles.text1,'String','Please wait for image processing...');
     drawnow;
     result = testingV2(img) ;
-    resultMessage = ['It is ' result ' !'];
+    resultMessage = [result ' !'];
     set(handles.text1,'String',resultMessage);
     drawnow;
 else

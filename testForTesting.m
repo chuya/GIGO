@@ -21,4 +21,5 @@ for topicIndex = 1:length(topicList)
         numList(ind) = numList(ind)+1;
     end
 end
+numList
 end

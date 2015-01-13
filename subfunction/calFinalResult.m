@@ -11,29 +11,28 @@ function result = votes(vectors,weightsList,topicList)
     scoreList = linspace(0,0,size(topicList,2));
     for i = 1:weightsNumber
         v = vectors.*weightsList(i).weights;
+%         score = sum(v);
+%         score
+%         v = v/sqrt(weightsList(i).weights*weightsList(i).weights');
         score = sum(v);
-        score
-        v = v/sqrt(weightsList(i).weights*weightsList(i).weights');
-        score = sum(v);
-        score
-        if( strcmp(weightsList(i).typeA,'bottle') )
-            if( strcmp(weightsList(i).typeB,'can') )
-                score = score + 1.1159;
-            elseif( strcmp(weightsList(i).typeB,'glass') )
-                score = score - 0.3129;
-            else
-                score = score + 0.0916;
-            end
-        elseif( strcmp(weightsList(i).typeA,'can'))
-            if( strcmp(weightsList(i).typeB,'glass') )
-                score = score - 3.0753;
-            else
-                score = score - 1.5976;
-            end
-        elseif( strcmp(weightsList(i).typeA,'glass') )
-            score = score + 0.064;
-        end
-        if(score < 0)
+%         if( strcmp(weightsList(i).typeA,'bottle') )
+%             if( strcmp(weightsList(i).typeB,'can') )
+%                 score = score + 1.1159;
+%             elseif( strcmp(weightsList(i).typeB,'glass') )
+%                 score = score - 0.3129;
+%             else
+%                 score = score + 0.0916;
+%             end
+%         elseif( strcmp(weightsList(i).typeA,'can'))
+%             if( strcmp(weightsList(i).typeB,'glass') )
+%                 score = score - 3.0753;
+%             else
+%                 score = score - 1.5976;
+%             end
+%         elseif( strcmp(weightsList(i).typeA,'glass') )
+%             score = score + 0.064;
+%         end
+        if(score > 0)
             ind = ismember(topicList,weightsList(i).typeA);
             votesList(ind) = votesList(ind) + 1;
             scoreList(ind) =  scoreList(ind) + score;
